@@ -1,0 +1,21 @@
+# 💡 FAQ (Frequent Asked Questions)
+
+### Can I share my Swiftly Anti-Cheat License?
+
+You can share it only across your account.
+
+### Where can I ask for support?
+
+Open a ticket on our [Discord Server](https://discord.gg/Abeq9UBrhm), and open a ticket in the `Support > Ticket` channel.
+
+### How can I update the Anti-Cheat?
+
+To update the anti-cheat, you need to download the asset again from [CFX.re Portal](https://portal.cfx.re/).
+
+### From where can I change my configuration?
+
+To change your configuration, you need to edit `data/config.json` from inside the Anti-Cheat resource and restart it.
+
+### My license is suspended. What should I do?
+
+Open a ticket on our [Discord Server](https://erisac.net/discord), asking for details about why is your license suspended.
