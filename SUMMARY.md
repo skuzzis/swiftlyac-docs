@@ -1,10 +1,12 @@
 # Table of contents
 
 * [👋 Welcome to Swiftly Anti-Cheat](README.md)
+* [💡 FAQ (Frequent Asked Questions)](faq-frequent-asked-questions.md)
 
-## Overview
+## Safe Events
 
-* [💡 FAQ (Frequent Asked Questions)](overview/faq-frequent-asked-questions.md)
+* [👷 Manual Safe Events](safe-events/manual-safe-events.md)
+* [⚙️ Automatic Safe Events](safe-events/automatic-safe-events.md)
 
 ## Product Guides
 
