@@ -1,0 +1,38 @@
+{
+    "index": {
+        "title": "👋 Welcome to SwiftlyAC",
+        "theme": {
+            "breadcrumb": false
+        }
+    },
+    "faq": {
+        "title": "💡 Frequent Asked Questions",
+        "theme": {
+            "breadcrumb": false
+        }
+    },
+    "safeevents": {
+        "title": "Safe Events",
+        "theme": {
+            "breadcrumb": false
+        }
+    },
+    "bypass": {
+        "title": "Bypass",
+        "theme": {
+            "breadcrumb": false
+        }
+    },
+    "events": {
+        "title": "Events",
+        "theme": {
+            "breadcrumb": false
+        }
+    },
+    "exports": {
+        "title": "Exports",
+        "theme": {
+            "breadcrumb": false
+        }
+    }
+}

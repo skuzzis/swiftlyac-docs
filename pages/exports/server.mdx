@@ -1,0 +1,262 @@
+# 🌐 Server-Side Exports
+
+## Safe Events Module
+
+### RegisterSafeEvent
+
+```lua
+--- @class SafeEventOptions
+--- @field ban boolean
+--- @field kick boolean
+
+--- @param event_name string
+--- @param options SafeEventOptions
+--- @return nil
+exports["ac-resource-name"]:RegisterSafeEvent(event_name, options)
+```
+
+#### Example
+
+```lua
+local safeEvents = {
+    "server:store:payitem"
+}
+
+local anticheat_resource = ""
+AddEventHandler("SW:SetupExports", function(anticheat, script)
+    if script == "*" or script == GetCurrentResourceName() then
+        anticheat_resource = anticheat
+        for i=1,#safeEvents do
+            exports[anticheat_resource]:RegisterSafeEvent(safeEvents[i], { ban = true, kick = false })
+        end
+    end
+end)
+```
+
+### CheckEvent
+
+```lua
+--- @param event_name string
+--- @param source number
+--- @param ... any Event Arguments
+--- @return boolean
+exports["ac-resource-name"]:CheckEvent(event_name, source, ...)
+```
+
+#### Example
+
+```lua
+RegisterNetEvent("server:store:payitem", function(item, price)
+    local src = source
+    if anticheat_resource ~= "" then
+        if not exports[anticheat_resource]:CheckEvent("server:store:payitem", src, item, price) then return end
+    end
+    -- ...
+end)
+```
+
+## Player Module
+
+### GetPlayerBySource
+
+```lua
+--- @param src number
+--- @return table|nil
+exports["ac-resource-name"]:GetPlayerBySource(src)
+```
+
+#### Example
+
+```lua
+local playerDBobj = exports["ac-resource-name"]:GetPlayerBySource(5)
+```
+
+### GetPlayerByIdentifier
+
+```lua
+--- @param identifier string
+--- @return table|nil
+exports["ac-resource-name"]:GetPlayerByIdentifier(identifier)
+```
+
+#### Example
+
+```lua
+local playerDBobj = exports["ac-resource-name"]:GetPlayerByIdentifier("discord:9999999999999")
+```
+
+### GetPlayerCustomID
+
+```lua
+-- The DBID can be taken from GetPlayerBySource or GetPlayerByIdentifier
+
+--- @param dbid number
+--- @return number|nil
+exports["ac-resource-name"]:GetPlayerCustomID(dbid)
+```
+
+#### Example
+
+```lua
+local playerDBobj = exports["ac-resource-name"]:GetPlayerCustomID(1)
+```
+
+### GetPlayerCustomID
+
+```lua
+-- The DBID can be taken from GetPlayerBySource or GetPlayerByIdentifier
+
+--- @param dbid number
+--- @param custom_id number|string
+--- @return nil
+exports["ac-resource-name"]:SetPlayerCustomID(dbid, custom_id)
+```
+
+#### Example
+
+```lua
+local src = 1
+exports["ac-resource-name"]:SetPlayerCustomID(src, QBCore.Functions.GetPlayer(src).citizenid)
+```
+
+### GivePlayerBypass
+
+```lua
+--- @param src number
+--- @param bypass_key string
+--- @return nil
+exports["ac-resource-name"]:GivePlayerBypass(src, bypass_key)
+```
+
+#### Example
+
+```lua
+exports["ac-resource-name"]:GivePlayerBypass(5, "player.block_noclip")
+```
+
+### RemovePlayerBypass
+
+```lua
+--- @param src number
+--- @param bypass_key string
+--- @return nil
+exports["ac-resource-name"]:RemovePlayerBypass(src, bypass_key)
+```
+
+#### Example
+
+```lua
+exports["ac-resource-name"]:RemovePlayerBypass(5, "player.block_noclip")
+```
+
+### HasPlayerBypass
+
+```lua
+--- @param src number
+--- @param bypass_key string
+--- @return boolean
+exports["ac-resource-name"]:HasPlayerBypass(src, bypass_key)
+```
+
+#### Example
+
+```lua
+if exports["ac-resource-name"]:HasPlayerBypass(5, "player.block_noclip") then
+    print("Player with source 5 has NoClip Bypass.")
+end
+```
+
+## Sanctions Module
+
+### GiveBan
+
+```lua
+--- @param src number
+--- @param reason string
+--- @param details string|nil
+--- @param shouldSkipScreenshot boolean|nil
+--- @return nil
+exports["ac-resource-name"]:GiveBan(src, reason, details, shouldSkipScreenshot)
+```
+
+#### Example
+
+```lua
+local sanctionedSrc = 5
+exports["ac-resource-name"]:GiveBan(sanctionedSrc, "Test Sanction", "This is a test sanction", false)
+```
+
+### GiveKick
+
+```lua
+--- @param src number
+--- @param reason string
+--- @param details string|nil
+--- @param shouldSkipScreenshot boolean|nil
+--- @return nil
+exports["ac-resource-name"]:GiveKick(src, reason, details, shouldSkipScreenshot)
+```
+
+#### Example
+
+```lua
+local sanctionedSrc = 5
+exports["ac-resource-name"]:GiveKick(sanctionedSrc, "Test Sanction", "This is a test sanction", false)
+```
+
+### GiveWarning
+
+```lua
+--- @param src number
+--- @param reason string
+--- @param details string|nil
+--- @param shouldSkipScreenshot boolean|nil
+--- @return nil
+exports["ac-resource-name"]:GiveWarning(src, reason, details, shouldSkipScreenshot)
+```
+
+#### Example
+
+```lua
+local sanctionedSrc = 5
+exports["ac-resource-name"]:GiveWarning(sanctionedSrc, "Test Sanction", "This is a test sanction", false)
+```
+
+## Screenshot Module
+
+### Screenshot
+
+```lua
+--- @param source number
+--- @param callback fun(url:string)
+--- @return nil
+exports["ac-resource-name"]:MakeScreenshot(source, callback)
+```
+
+#### Example
+
+```lua
+local targetSource = 5
+exports["ac-resource-name"]:Screenshot(targetSource, function(url)
+    print("[SwiftlyAC] Screenshot for "..targetSource..": "..url)
+end)
+```
+
+### Screen Recording
+
+```lua
+--- @param source number
+--- @param durationInMs number
+--- @param callback fun(url:string)
+--- @return nil
+exports["ac-resource-name"]:MakeScreenRecording(source, durationInMs, callback)
+```
+
+#### Example
+
+```lua
+local targetSource = 5
+exports["ac-resource-name"]:MakeScreenRecording(targetSource, 15000, function(url)
+    print("[SwiftlyAC] Screen Recording of 15000ms for "..targetSource..": "..url)
+end)
+```

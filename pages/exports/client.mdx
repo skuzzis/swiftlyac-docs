@@ -1,0 +1,21 @@
+# 🖥️ Client-Side Exports
+
+## Safe Events Module
+
+### TriggerServerEvent
+
+```lua
+--- @param event_name string
+--- @param ... any
+--- @return nil
+exports["ac-resource-name"]:TriggerServerEvent(event_name, ...)
+```
+
+#### Example
+
+```lua
+local product = "phone"
+local productprice = 500
+        
+exports["ac-resource-name"]:TriggerServerEvent("server:store:payitem", product, productprice)
+```

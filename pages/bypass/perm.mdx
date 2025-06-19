@@ -1,0 +1,158 @@
+import { Tabs } from 'nextra/components'
+
+# 💾 Permanent Bypass
+
+To add a permanent bypass, you need to add inside the `data/bypasses.json`
+
+```json
+{
+    "IDENTIFIER": ["permission_key #1", "permission_key #2", ...]
+}
+```
+
+## Permission Keys
+
+Below there is a list of all the permission keys available in Swiftly Anti-Cheat.
+
+<Tabs items={['Entity Protection', 'General', 'Peds', 'Objects', 'Pickups', 'Events', 'Explosions', 'Particles', 'Vehicles', 'Weapons', 'Player']} defaultIndex="0">
+    <Tabs.Tab>
+        ```json
+        [
+            "entity_protection.block_unauthorized_resources"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "general.heartbeat_system",
+            "general.block_resource_stopper"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "peds.block_aggressive_peds",
+            "peds.detection_mode",
+            "peds.block_blacklisted_weapons",
+            "peds.block_all",
+            "peds.rate_limiter",
+            "peds.tasks_detection_mode"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "objects.detection_mode",
+            "objects.rate_limiter"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "pickups.block_spawn",
+            "pickups.block_collecting"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "events.block_blacklisted",
+            "events.events_protection",
+            "events.rate_limiter"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "explosions.enabled",
+            "explosions.block_invisible",
+            "explosions.block_silent",
+            "explosions.block_spoofed",
+            "explosions.rate_limiter"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "particles.enabled",
+            "particles.whitelisted_particles",
+            "particles.maximum_scale",
+            "particles.rate_limiter"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "vehicles.block_blacklisted_plates",
+            "vehicles.detection_mode",
+            "vehicles.block_gravity",
+            "vehicles.block_bulletproof_vehicles",
+            "vehicles.block_hash_changer",
+            "vehicles.block_handling_edit",
+            "vehicles.block_manipulation",
+            "vehicles.block_invisible"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "weapons.block_meta_weapons",
+            "weapons.max_ammo",
+            "weapons.block_infinite_ammo",
+            "weapons.block_damage_modifier",
+            "weapons.detection_mode",
+            "weapons.block_spoofed_bullets",
+            "weapons.block_spoofed_weapons",
+            "weapons.block_rapid_fire",
+            "weapons.block_weapon_manipulation"
+        ]
+        ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+        ```json
+        [
+            "player.block_superjump",
+            "player.block_clear_ped_tasks",
+            "player.block_aimbot_mods",
+            "player.block_hitbox_changer",
+            "player.block_combatroll",
+            "player.menus.block_textures",
+            "player.menus.block_ocr",
+            "player.menus.ai_detection",
+            "player.menus.try_block_executors",
+            "player.block_solo_session",
+            "player.block_spectate",
+            "player.block_remote_ragdoll",
+            "player.block_armour_manipulation",
+            "player.block_health_manipulation",
+            "player.block_tiny_skin",
+            "player.block_invisible",
+            "player.block_infinite_stamina",
+            "player.block_noclip",
+            "player.block_speed",
+            "player.block_freecam",
+            "player.block_carjackers",
+            "player.block_nightvision",
+            "player.block_thermalvision",
+            "player.block_nui_dev_tools"
+        ]
+        ```
+    </Tabs.Tab>
+</Tabs>
+
+### Example
+
+```json
+{
+    "discord:9999999999": ["player.block_noclip", "player.block_superjump"]
+}
+```

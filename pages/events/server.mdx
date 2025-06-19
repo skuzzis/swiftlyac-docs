@@ -1,0 +1,98 @@
+# ⚙️ Server-Side Events
+
+## SW:SetupExport
+
+```lua
+--- @param anticheat_resource string
+--- @param resource string
+AddEventHandler("SW:SetupExports", function(anticheat_resource, resource)
+    -- ...
+end)
+```
+
+### Example
+
+```lua
+local ac_resource = ""
+AddEventHandler("SW:SetupExports", function(ac, resource)
+    if resource == "*" or resource == GetCurrentResourceName() then
+        ac_resource = ac
+        print("[Server] Anti-Cheat started with resource "..ac_resource)
+    end
+end)
+```
+
+## SW:OnPlayerSanction
+
+```lua
+--- @param src number
+--- @param kind string ban / kick / warn
+--- @param reason string
+--- @param details string|nil
+--- @param screenshotURL string|nil
+--- @param created_at number
+AddEventHandler("SW:OnPlayerSanction", function(src, kind, reason, details, screenshotURL, created_at)
+    -- ...
+end)
+```
+
+### Example
+
+```lua
+AddEventHandler("SW:OnPlayerSanction", function(src, kind, reason, details, screenshotURL, created_at)
+    print("[SWAC] Player "..src.." has received a "..kind.." for "..reason.." ("..(details or "-")..") at "..created_at)
+    if screenshotURL then
+        print("[SWAC] Screenshot: "..screenshotURL)
+    end
+end)
+```
+
+## SW:StartAC
+
+```lua
+AddEventHandler("SW:StartAC", function()
+    -- ...
+end)
+```
+
+### Example
+
+```lua
+AddEventHandler("SW:StartAC", function()
+    print("SwiftlyAC has started.")
+end)
+```
+
+## SW:PlayerDisconnect
+
+```lua
+--- @param src number
+AddEventHandler("SW:PlayerDisconnect", function(src)
+    -- ...
+end)
+```
+
+### Example
+
+```lua
+AddEventHandler("SW:PlayerDisconnect", function(src)
+    print("Player "..src.." has disconnected.")
+end)
+```
+
+## SW:PlayerConnect
+
+```lua
+--- @param src number
+AddEventHandler("SW:PlayerConnect", function(src)
+    -- ...
+end)
+```
+
+### Example
+
+```lua
+AddEventHandler("SW:PlayerConnect", function(src)
+    print("Player "..src.." has connected, now it's safe to give bypasses.")
+end)
+```
