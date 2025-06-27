@@ -34,5 +34,11 @@
         "theme": {
             "breadcrumb": false
         }
+    },
+    "commands": {
+        "title": "Commands",
+        "theme": {
+            "breadcrumb": false
+        }
     }
 }
