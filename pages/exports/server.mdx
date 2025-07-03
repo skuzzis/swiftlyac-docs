@@ -222,6 +222,50 @@ local sanctionedSrc = 5
 exports["ac-resource-name"]:GiveWarning(sanctionedSrc, "Test Sanction", "This is a test sanction", false)
 ```
 
+### GetSanction
+
+```lua
+--- @param sanction_id number
+--- @return table|nil
+exports["ac-resource-name"]:GetSanction(sanction_id)
+```
+
+#### Example
+
+```lua
+local sanction = exports["ac-resource-name"]:GetSanction(5)
+if not sanction then return print("Invalid Sanction.") end
+```
+
+### GetSanctionsAssociatedToPlayer
+
+```lua
+--- @param sanction_id number
+--- @return table
+exports["ac-resource-name"]:GetSanctionsAssociatedToPlayer(sanction_id)
+```
+
+#### Example
+
+```lua
+local sanction = exports["ac-resource-name"]:GetSanctionsAssociatedToPlayer(5)
+if not sanction then return print("Invalid Sanction.") end
+```
+
+### RemoveSanction
+
+```lua
+--- @param sanction_id number
+--- @return nil
+exports["ac-resource-name"]:RemoveSanction(sanction_id)
+```
+
+#### Example
+
+```lua
+exports["ac-resource-name"]:RemoveSanction(5)
+```
+
 ## Screenshot Module
 
 ### Screenshot
