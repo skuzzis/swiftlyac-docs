@@ -1,0 +1,44 @@
+name: Release .next Folder
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Next.js App
+        run: npm run build
+
+      - name: Upload .next Folder as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next/
+
+      - name: Zip .next Folder
+        run: |
+          zip -r next-build.zip .next
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Next.js Build - ${{ github.sha }}
+          tag_name: next-build-${{ github.sha }}
+          files: next-build.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
