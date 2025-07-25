@@ -35,13 +35,13 @@ jobs:
 
       - name: Zip .next Folder
         run: |
-          zip -r next-build.zip .next
+          tar czvf next-build.tar.gz .next
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           name: Next.js Build - ${{ github.sha }}
           tag_name: next-build-${{ github.sha }}
-          files: next-build.zip
+          files: next-build.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
